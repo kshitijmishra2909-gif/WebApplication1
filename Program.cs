@@ -1,4 +1,3 @@
-using WebApplication1.Repositories;
 using WebApplication1.Services;
 
 namespace WebApplication1;
@@ -56,7 +55,8 @@ public class Program
             serviceProvider.GetRequiredService<IHttpClientFactory>().CreateClient("ExternalApi"));
         builder.Services.AddKeyedSingleton("ExternalApi2", (serviceProvider, _) =>
             serviceProvider.GetRequiredService<IHttpClientFactory>().CreateClient("ExternalApi2"));
-        builder.Services.AddSingleton<IWorkItemRepository, InMemoryWorkItemRepository>();
+        // builder.Services.AddSingleton<IWorkItemRepository, InMemoryWorkItemRepository>();
+        builder.Services.AddSingleton<IIncidentService, IncidentService>();
         builder.Services.AddSingleton<ExternalApiService>();
         builder.Services.AddSingleton<ExternalApi2Service>();
 
